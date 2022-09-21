@@ -10,12 +10,13 @@ class Cutter:
         make_dir = "mkdir {}".format(new_dir)
 
         # image source
+        type = image.split(".")[-1]
         splitting = "{} {}".format(col, row)
         larges = "--load-large-images"
 
         # commanding
         copy = "copy {} {}".format(image, new_dir)
-        cmd = [cd, make_dir, copy, "cd {} & split-image {} {} {}".format(new_dir, image, splitting, larges)]
+        cmd = [cd, make_dir, copy, "cd {} & rename {} {}.{}  & split-image {}.{} {} {}".format(new_dir, image, name, type, name, type, splitting, larges)]
 
         # launching
         for i in range(1, len(cmd)):
