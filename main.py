@@ -34,6 +34,7 @@ class Main:
             with open('test.pdf', 'w+b') as f:
                 f.write(text)
             import tabula
+
             df = tabula.read_pdf("test.pdf", pages=1)[0]
             df.to_excel('here.xlsx')
 
